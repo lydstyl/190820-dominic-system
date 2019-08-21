@@ -3,11 +3,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Settings from './components/pages/Settings';
 import Tool from './components/pages/Tool';
+import PAOState from './context/pao/paoState';
 import './App.css';
 
 function App() {
   return (
-    <div className='App'>
+    <PAOState>
       <Router>
         <Navbar />
         <div className='container mt-3'>
@@ -17,7 +18,7 @@ function App() {
           </Switch>
         </div>
       </Router>
-    </div>
+    </PAOState>
   );
 }
 
