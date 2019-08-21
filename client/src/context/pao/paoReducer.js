@@ -1,4 +1,9 @@
-import { GET_PAOS, UPDATE_PAO } from '../types';
+import {
+  GET_PAOS,
+  UPDATE_PAO,
+  GET_TOOL_PAOS,
+  UPDATE_TOOL_PAOS
+} from '../types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -17,6 +22,17 @@ export default (state, action) => {
     //     // current: null,
     //     // loading: false
     //   };
+    case UPDATE_TOOL_PAOS:
+      return {
+        ...state,
+        toolPAOs: action.payload
+      };
+    case GET_TOOL_PAOS:
+    // break;
+    // return{
+    //   ...state,
+    //   toolPAOs:
+    // }
     default:
       return state;
   }

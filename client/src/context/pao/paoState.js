@@ -1,11 +1,17 @@
 import React, { useReducer } from 'react';
 import PAOContext from './paoContext';
 import paoReducer from './paoReducer';
-import { GET_PAOS, UPDATE_PAO } from '../types';
+import {
+  GET_PAOS,
+  UPDATE_PAO,
+  GET_TOOL_PAOS,
+  UPDATE_TOOL_PAOS
+} from '../types';
 
 const PAOState = props => {
   const initialSate = {
-    paos: null
+    paos: null,
+    toolPAOs: null
     // error: null
   };
 
@@ -28,11 +34,24 @@ const PAOState = props => {
 
   // Update PAO
 
+  // Get Tool PAOs
+  const getToolPAOs = () => {
+    dispatch({ type: GET_TOOL_PAOS });
+  };
+
+  // Update Tool PAOs
+  const updateToolPAOs = cards => {
+    dispatch({ type: UPDATE_TOOL_PAOS, payload: cards });
+  };
+
   return (
     <PAOContext.Provider
       value={{
         paos: state.paos,
-        getPAOs
+        toolPAOs: state.toolPAOs,
+        getPAOs,
+        getToolPAOs,
+        updateToolPAOs
       }}
     >
       {props.children}
