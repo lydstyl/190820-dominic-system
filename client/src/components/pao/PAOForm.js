@@ -3,7 +3,6 @@ import PAOContext from '../../context/pao/paoContext';
 
 const PAOForm = ({ number }) => {
   const paoContext = useContext(PAOContext);
-  // console.log(paoContext);
 
   const { paos, updatePAO } = paoContext;
 
@@ -31,7 +30,7 @@ const PAOForm = ({ number }) => {
       src: form.querySelector('[placeholder=url]').value
     };
 
-    //form.classList.remove('d-block');
+    form.classList.remove('d-block');
     updatePAO(update);
   };
 

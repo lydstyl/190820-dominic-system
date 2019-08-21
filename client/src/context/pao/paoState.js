@@ -19,27 +19,33 @@ const PAOState = props => {
 
   // Get PAOs
   const getPAOs = () => {
-    // this temporary replace bdd
-    const arr = [];
-    for (let i = 0; i <= 99; i++) {
-      arr.push([
-        { number: i, type: 'personage', title: 'personage ' + i },
-        { number: i, type: 'action', title: 'action ' + i },
-        { number: i, type: 'object', title: 'object ' + i }
-      ]);
+    const localArr = localStorage.getItem('arr');
+    let arr = [];
+
+    if (!localArr) {
+      // this temporary replace bdd
+      for (let i = 0; i <= 99; i++) {
+        arr.push([
+          { number: i, type: 'personage', title: 'personage ' + i },
+          { number: i, type: 'action', title: 'action ' + i },
+          { number: i, type: 'object', title: 'object ' + i }
+        ]);
+      }
+      // end of temporary
+
+      localStorage.setItem('arr', JSON.stringify(arr));
+    } else {
+      arr = JSON.parse(localArr);
     }
-    // end of temporary
+
     dispatch({ type: GET_PAOS, payload: arr });
   };
 
   // Update PAO
   const updatePAO = update => {
-    // console.log('update', update);
-
     let position = update.type === 'personage' ? 0 : 1;
     if (update.type === 'object') position = 2;
 
-    // console.log('state', state.paos[update.number][position]); // a update !
     update.position = position;
     dispatch({ type: UPDATE_PAO, payload: update });
   };

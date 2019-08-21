@@ -17,16 +17,16 @@ export default (state, action) => {
       const toBeReplaced =
         state.paos[action.payload.number][action.payload.position];
       const by = action.payload;
-      console.log('replace by', toBeReplaced, by);
 
       const { name, src } = by;
 
       toBeReplaced.title = name;
-      toBeReplaced.img = src; ////
-      console.log(toBeReplaced);
+      toBeReplaced.img = src;
 
       const newPaos = [...state.paos];
       newPaos[action.payload.number][action.payload.position] = toBeReplaced;
+
+      localStorage.setItem('arr', JSON.stringify(newPaos));
 
       return {
         ...state,
