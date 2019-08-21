@@ -33,6 +33,7 @@ const Tool = () => {
       updateToolPAOs(
         newCards.map(card => (
           <PAO
+            margin={true}
             key={card.number} // todo generate unique key here because if for exemple 45 45 45 66 --> 3 times same 45 key
             type={card.type}
             title={card.title}
