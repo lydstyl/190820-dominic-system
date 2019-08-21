@@ -2,6 +2,7 @@ import React from 'react';
 
 const PAO = ({
   img = 'https://jeretiens.net/wp-content/uploads/2018/08/syst%C3%A8me_m%C3%A9morisation_pao_personnage_action_objet.jpg',
+  src,
   title,
   type,
   number,
@@ -71,7 +72,7 @@ const PAO = ({
   return (
     <div className={margin ? 'card m-1' : 'card'} onClick={onClick}>
       <span className={badge}>{type}</span>
-      <img className='card-img-top' src={img} alt='pao' />
+      <img className='card-img-top' src={src ? src : img} alt='pao' />
       <h4 className='badge badge-light'>#{number}</h4>
       <h5 className='card-title'>{title}</h5>
     </div>

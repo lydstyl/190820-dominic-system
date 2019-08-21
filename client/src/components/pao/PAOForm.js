@@ -1,9 +1,38 @@
-import React from 'react';
+import React, { useContext, useRef } from 'react';
+import PAOContext from '../../context/pao/paoContext';
 
-const PAOForm = () => {
+const PAOForm = ({ number }) => {
+  const paoContext = useContext(PAOContext);
+  // console.log(paoContext);
+
+  const { paos, updatePAO } = paoContext;
+
+  const url = useRef(null);
+  const name = useRef(null);
+
   const onClick = e => {
-    e.target.parentNode.classList.remove('d-block');
-    // @TODO modifier le nom de la carte via la methode de context updatePAO
+    const form = e.target.parentNode;
+
+    // get the PAO type from the form
+    const btnClass = form.querySelector('button').classList[2];
+    let type = '';
+    if (btnClass === 'btn-primary') {
+      type = 'personage';
+    } else if (btnClass === 'btn-success') {
+      type = 'action';
+    } else {
+      type = 'object';
+    }
+
+    const update = {
+      type,
+      number,
+      name: form.querySelector('[placeholder=name]').value,
+      src: form.querySelector('[placeholder=url]').value
+    };
+
+    //form.classList.remove('d-block');
+    updatePAO(update);
   };
 
   return (
@@ -14,7 +43,12 @@ const PAOForm = () => {
             Image URL
           </span>
         </div>
-        <input type='text' className='form-control' placeholder='url' />
+        <input
+          type='text'
+          className='form-control'
+          placeholder='url'
+          ref={url}
+        />
       </div>
       <div className='input-group mb-3'>
         <div className='input-group-prepend'>
@@ -22,7 +56,12 @@ const PAOForm = () => {
             Name
           </span>
         </div>
-        <input type='text' className='form-control' placeholder='name' />
+        <input
+          type='text'
+          className='form-control'
+          placeholder='name'
+          ref={name}
+        />
       </div>
       <button
         type='button'

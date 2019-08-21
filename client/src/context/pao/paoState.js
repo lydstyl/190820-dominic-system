@@ -33,6 +33,16 @@ const PAOState = props => {
   };
 
   // Update PAO
+  const updatePAO = update => {
+    // console.log('update', update);
+
+    let position = update.type === 'personage' ? 0 : 1;
+    if (update.type === 'object') position = 2;
+
+    // console.log('state', state.paos[update.number][position]); // a update !
+    update.position = position;
+    dispatch({ type: UPDATE_PAO, payload: update });
+  };
 
   // Get Tool PAOs
   const getToolPAOs = () => {
@@ -51,7 +61,8 @@ const PAOState = props => {
         toolPAOs: state.toolPAOs,
         getPAOs,
         getToolPAOs,
-        updateToolPAOs
+        updateToolPAOs,
+        updatePAO
       }}
     >
       {props.children}

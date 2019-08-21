@@ -5,7 +5,7 @@ import PAOContext from '../../context/pao/paoContext';
 const Tool = () => {
   const paoContext = useContext(PAOContext);
 
-  let { paos, getPAOs, updateToolPAOs, getToolPAOs, toolPAOs } = paoContext;
+  const { paos, getPAOs, updateToolPAOs, getToolPAOs, toolPAOs } = paoContext;
 
   const text = useRef('');
 
@@ -38,6 +38,7 @@ const Tool = () => {
             type={card.type}
             title={card.title}
             number={card.number}
+            img={card.img}
           />
         ))
       );
