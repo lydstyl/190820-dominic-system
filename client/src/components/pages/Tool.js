@@ -11,7 +11,6 @@ const Tool = () => {
     updateToolPAOs,
     getToolPAOs,
     toolPAOs,
-    isNoPAOs,
     setCurrentNumber
   } = paoContext;
 
@@ -21,25 +20,23 @@ const Tool = () => {
 
   useEffect(() => {
     if (currentNumber) {
+      if (!document.querySelector('input').value) {
+        // set input value
+        document.querySelector('input').value = currentNumber;
+      }
       updateCards(currentNumber);
+      getToolPAOs();
+    } else if (localStorage.getItem('currentNumber')) {
+      const val = parseInt(localStorage.getItem('currentNumber'), 10);
+      document.querySelector('input').value = val;
+
+      updateCards(val);
+      getToolPAOs();
+
+      // @TODO what if no card after /tool reloaded ?
+      // what if 4.654654444444445e+28 after reloaded a big number ?
     }
   }, []);
-
-  useEffect(() => {
-    if (localStorage.getItem('currentNumber')) {
-      setCurrentNumber(localStorage.getItem('currentNumber'));
-    }
-    document.querySelector('input').value = currentNumber;
-
-    if (!isNoPAOs && !document.querySelector('.card')) {
-      updateCards(parseInt(currentNumber, 10)); ///
-    }
-  }, [currentNumber]);
-
-  useEffect(() => {
-    getToolPAOs();
-    // eslint-disable-next-line
-  }, [toolPAOs]);
 
   const updateCards = val => {
     val = val.toString();
