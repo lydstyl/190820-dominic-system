@@ -20,13 +20,19 @@ const Tool = () => {
   const text = useRef(currentNumber);
 
   useEffect(() => {
+    if (currentNumber) {
+      updateCards(currentNumber);
+    }
+  }, []);
+
+  useEffect(() => {
     if (localStorage.getItem('currentNumber')) {
       setCurrentNumber(localStorage.getItem('currentNumber'));
     }
     document.querySelector('input').value = currentNumber;
 
     if (!isNoPAOs && !document.querySelector('.card')) {
-      updateCards(parseInt(currentNumber, 10));
+      updateCards(parseInt(currentNumber, 10)); ///
     }
   }, [currentNumber]);
 
