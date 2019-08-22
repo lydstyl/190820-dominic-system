@@ -11,6 +11,7 @@ const Tool = () => {
     updateToolPAOs,
     getToolPAOs,
     toolPAOs,
+    isNoPAOs,
     setCurrentNumber
   } = paoContext;
 
@@ -18,21 +19,13 @@ const Tool = () => {
 
   const text = useRef(currentNumber);
 
-  let reloaded = false;
-
-  useEffect(() => {
-    if (!paos) {
-      getPAOs();
-      reloaded = true;
-    }
-  }, []);
-
   useEffect(() => {
     if (localStorage.getItem('currentNumber')) {
-      currentNumber = localStorage.getItem('currentNumber');
+      setCurrentNumber(localStorage.getItem('currentNumber'));
     }
     document.querySelector('input').value = currentNumber;
-    if (!reloaded && !document.querySelector('.card')) {
+
+    if (!isNoPAOs && !document.querySelector('.card')) {
       updateCards(parseInt(currentNumber, 10));
     }
   }, [currentNumber]);
@@ -43,8 +36,6 @@ const Tool = () => {
   }, [toolPAOs]);
 
   const updateCards = val => {
-    //console.log('updateCards');
-
     val = val.toString();
     setCurrentNumber(val);
     localStorage.setItem('currentNumber', val);
@@ -57,7 +48,11 @@ const Tool = () => {
       num = parseInt(num, 10);
       position++;
 
-      newCards.push(paos[num][position]);
+      if (paos) {
+        newCards.push(paos[num][position]);
+      } else {
+        getPAOs();
+      }
       if (position === 2) {
         position = -1;
       }

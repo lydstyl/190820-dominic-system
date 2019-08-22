@@ -13,7 +13,8 @@ const PAOState = props => {
   const initialSate = {
     paos: null,
     toolPAOs: null,
-    currentNumber: null
+    currentNumber: null,
+    isNoPAOs: true
   };
 
   const [state, dispatch] = useReducer(paoReducer, initialSate);
@@ -72,6 +73,7 @@ const PAOState = props => {
         paos: state.paos,
         toolPAOs: state.toolPAOs,
         currentNumber: state.currentNumber,
+        isNoPAOs: state.isNoPAOs,
         getPAOs,
         getToolPAOs,
         updateToolPAOs,

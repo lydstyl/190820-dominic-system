@@ -49,6 +49,7 @@ export default (state, action) => {
       };
     case GET_TOOL_PAOS:
       console.log('GET_TOOL_PAOS');
+    // eslint-disable-next-line
     default:
       return state;
   }
