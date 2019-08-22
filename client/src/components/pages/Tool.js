@@ -5,43 +5,83 @@ import PAOContext from '../../context/pao/paoContext';
 const Tool = () => {
   const paoContext = useContext(PAOContext);
 
-  const { paos, getPAOs, updateToolPAOs, getToolPAOs, toolPAOs } = paoContext;
+  const {
+    paos,
+    getPAOs,
+    updateToolPAOs,
+    getToolPAOs,
+    toolPAOs,
+    setCurrentNumber
+  } = paoContext;
 
-  const text = useRef('');
+  let { currentNumber } = paoContext;
+
+  const text = useRef(currentNumber);
+
+  let reloaded = false;
 
   useEffect(() => {
     if (!paos) {
       getPAOs();
+      reloaded = true;
     }
+  }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem('currentNumber')) {
+      currentNumber = localStorage.getItem('currentNumber');
+    }
+    document.querySelector('input').value = currentNumber;
+    if (!reloaded && !document.querySelector('.card')) {
+      updateCards(parseInt(currentNumber, 10));
+    }
+  }, [currentNumber]);
+
+  useEffect(() => {
     getToolPAOs();
     // eslint-disable-next-line
-  }, [paoContext, toolPAOs, paos]);
+  }, [toolPAOs]);
+
+  const updateCards = val => {
+    //console.log('updateCards');
+
+    val = val.toString();
+    setCurrentNumber(val);
+    localStorage.setItem('currentNumber', val);
+
+    let cards = val.match(/.{1,2}/g);
+    let newCards = [];
+    let position = -1;
+
+    cards.forEach(num => {
+      num = parseInt(num, 10);
+      position++;
+
+      newCards.push(paos[num][position]);
+      if (position === 2) {
+        position = -1;
+      }
+    });
+
+    updateToolPAOs(
+      newCards.map((card, index) => (
+        <PAO
+          margin={true}
+          key={index}
+          type={card.type}
+          title={card.title}
+          number={card.number}
+          img={card.img}
+        />
+      ))
+    );
+  };
 
   const onChange = e => {
     if (text.current.value !== '') {
       const val = e.target.value;
-      let cards = val.match(/.{1,2}/g);
-      let newCards = [];
-      let position = -1;
-      cards.forEach(num => {
-        position++;
-        newCards.push(paos[num][position]);
-        if (position === 2) {
-          position = -1;
-        }
-      });
-      updateToolPAOs(
-        newCards.map(card => (
-          <PAO
-            margin={true}
-            key={card.number} // todo generate unique key here because if for exemple 45 45 45 66 --> 3 times same 45 key
-            type={card.type}
-            title={card.title}
-            number={card.number}
-            img={card.img}
-          />
-        ))
-      );
+
+      updateCards(val);
     }
   };
 

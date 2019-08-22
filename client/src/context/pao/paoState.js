@@ -5,14 +5,15 @@ import {
   GET_PAOS,
   UPDATE_PAO,
   GET_TOOL_PAOS,
-  UPDATE_TOOL_PAOS
+  UPDATE_TOOL_PAOS,
+  SET_CURRENT_NUMBER
 } from '../types';
 
 const PAOState = props => {
   const initialSate = {
     paos: null,
-    toolPAOs: null
-    // error: null
+    toolPAOs: null,
+    currentNumber: null
   };
 
   const [state, dispatch] = useReducer(paoReducer, initialSate);
@@ -60,15 +61,22 @@ const PAOState = props => {
     dispatch({ type: UPDATE_TOOL_PAOS, payload: cards });
   };
 
+  // Set current Number
+  const setCurrentNumber = current => {
+    dispatch({ type: SET_CURRENT_NUMBER, payload: current });
+  };
+
   return (
     <PAOContext.Provider
       value={{
         paos: state.paos,
         toolPAOs: state.toolPAOs,
+        currentNumber: state.currentNumber,
         getPAOs,
         getToolPAOs,
         updateToolPAOs,
-        updatePAO
+        updatePAO,
+        setCurrentNumber
       }}
     >
       {props.children}

@@ -26,9 +26,6 @@ const PAO = ({
       }
 
       // get target infos
-      const number = e.target.parentNode
-        .querySelector('h4')
-        .innerText.split('#')[1];
       const type = e.target.parentNode.querySelector('.badge').innerText;
       const imgSrc = e.target.parentNode.querySelector('img').src;
       const name = e.target.parentNode.querySelector('h5').innerText;

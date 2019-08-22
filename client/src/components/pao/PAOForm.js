@@ -4,7 +4,7 @@ import PAOContext from '../../context/pao/paoContext';
 const PAOForm = ({ number }) => {
   const paoContext = useContext(PAOContext);
 
-  const { paos, updatePAO } = paoContext;
+  const { updatePAO } = paoContext;
 
   const url = useRef(null);
   const name = useRef(null);
