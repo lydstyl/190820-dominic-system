@@ -8,7 +8,6 @@ This app can help you tu remember big numbers or undertand how to use Dominic sy
 
 1. API rest
 
-- PAO.js model and get PAOs route
 - update PAOs route
 
 2. Auth

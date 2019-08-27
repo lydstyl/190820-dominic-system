@@ -4,7 +4,7 @@ const auth = require('../middleware/auth');
 const { check, validationResult } = require('express-validator');
 
 const User = require('../models/User');
-// const PAO = require('../models/PAO');
+const PAO = require('../models/PAO');
 
 // @route     GET api/paocards
 // @desc      Get all users contacts
