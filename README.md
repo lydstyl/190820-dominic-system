@@ -8,8 +8,6 @@ This app can help you tu remember big numbers or undertand how to use Dominic sy
 
 1. API rest
 
-- middleware auth with token (video 46)
-- add default PAOs when register or login
 - PAO.js model and get PAOs route
 - update PAOs route
 

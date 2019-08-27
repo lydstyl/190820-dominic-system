@@ -6,6 +6,29 @@ const config = require('config');
 const { check, validationResult } = require('express-validator');
 
 const User = require('../models/User');
+const PAO = require('../models/PAO');
+
+const makeFirstsPAOs = async (userId, res) => {
+  const types = ['personage', 'action', 'object'];
+  let newPao;
+  for (let i = 0; i <= 99; i++) {
+    try {
+      for (let j = 0; j <= 2; j++) {
+        newPAO = new PAO({
+          number: i,
+          type: types[j % 3],
+          title: `${types[j % 3]} ` + i,
+          user: userId
+        });
+
+        await newPAO.save();
+      }
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error when making firsts PAOs');
+    }
+  }
+};
 
 // @route   POST  api/users
 // @desc    Register a user
@@ -50,6 +73,8 @@ router.post(
           id: user.id
         }
       };
+
+      makeFirstsPAOs(user.id, res);
 
       jwt.sign(
         payload,

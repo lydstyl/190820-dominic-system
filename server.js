@@ -13,7 +13,7 @@ app.use(express.json({ extended: false }));
 // Define Routes
 app.use('/api/users', require('./routes/users')); // register a user and get token
 app.use('/api/auth', require('./routes/auth')); // login a user and get token
-// app.use('/api/paocards', require('./routes/paocards'));
+app.use('/api/paocards', require('./routes/paocards'));
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
