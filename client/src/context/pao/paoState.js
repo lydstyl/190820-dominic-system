@@ -24,6 +24,10 @@ const PAOState = props => {
     let arr = [];
 
     if (!localArr) {
+      // @todo replace the temporary bellow by fetching all user PAOs with API get http://localhost:5000/api/paocards it should be an array that will replace arr
+      // if error check if there is an array in localStorage
+      // else show an error
+
       // this temporary replace bdd
       for (let i = 0; i <= 99; i++) {
         arr.push([

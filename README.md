@@ -8,7 +8,13 @@ This app can help you tu remember big numbers or undertand how to use Dominic sy
 
 1. API rest
 
-- update PAOs route
+- when connected fill local storage with all cards from db (eveb if not empty but if error get local storage then) and do the same with number in Tool
+- when editing a card, save it to db
+- optional
+  - when not logged in, only show Login, Register and How to use it
+  - when just registered or just loged in show Logout, Settings and Tool but no Login and no Register and also go to Tool
+  - when editing a number in Tool, save it to db too
+  - find and do the @todo
 
 2. Auth
 
