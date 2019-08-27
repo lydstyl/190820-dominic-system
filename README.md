@@ -1,8 +1,13 @@
-# Contact Keeper
+# Dominic System
 
 > Full stack MERN Dominic system manager with React hooks, context & JWT authentication.
 
 This app can help you tu remember big numbers or undertand how to use Dominic system.
+
+## Todo before deploying
+
+1. API rest
+2. Auth
 
 ## Usage
 
