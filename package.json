@@ -1,0 +1,29 @@
+{
+  "name": "dominic-system",
+  "version": "1.0.0",
+  "description": "Personage - action - object from Dominic system to remember big numbers app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "clientinstall": "npm install --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lydstyl/190820-dominicSys.git"
+  },
+  "keywords": [
+    "Dominic",
+    "system",
+    "PAO"
+  ],
+  "author": "Gabriel Brun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lydstyl/190820-dominicSys/issues"
+  },
+  "homepage": "https://github.com/lydstyl/190820-dominicSys#readme"
+}
