@@ -10,9 +10,9 @@ const app = express();
 // Init Middleware
 app.use(express.json({ extended: false }));
 
-// // Define Routes
-// app.use('/api/users', require('./routes/users'));
-// app.use('/api/auth', require('./routes/auth'));
+// Define Routes
+app.use('/api/users', require('./routes/users')); // register a user
+// app.use('/api/auth', require('./routes/auth')); // login a user
 // app.use('/api/paocards', require('./routes/paocards'));
 
 // Serve static assets in production
