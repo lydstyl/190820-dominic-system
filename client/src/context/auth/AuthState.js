@@ -17,7 +17,7 @@ import {
 const AuthState = props => {
   const initialSate = {
     token: localStorage.getItem('token'), // important
-    isAuthenticated: null,
+    isAuthenticated: localStorage.getItem('token') ? true : null,
     loading: true,
     user: null,
     error: null
@@ -27,6 +27,8 @@ const AuthState = props => {
 
   // Load User
   const loadUser = async () => {
+    console.log('loadUser');
+
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
