@@ -21,6 +21,11 @@ const Navbar = () => {
 
       <div className='collapse navbar-collapse' id='navbarSupportedContent'>
         <ul className='navbar-nav mr-auto'>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/'>
+              Home
+            </Link>
+          </li>
           <li className='nav-item active'>
             <Link className='nav-link' to='/settings'>
               Settings
@@ -29,11 +34,6 @@ const Navbar = () => {
           <li className='nav-item'>
             <Link className='nav-link' to='/tool'>
               Tool
-            </Link>
-          </li>
-          <li className='nav-item'>
-            <Link className='nav-link' to='/how'>
-              How to use
             </Link>
           </li>
           <li className='nav-item'>

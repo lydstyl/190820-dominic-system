@@ -1,9 +1,12 @@
 import React, { useContext, useRef, useEffect } from 'react';
 import PAO from '../pao/PAO';
 import PAOContext from '../../context/pao/paoContext';
+import AuhtContext from '../../context/auth/authContext';
 
 const Tool = () => {
   const paoContext = useContext(PAOContext);
+
+  const authContext = useContext(AuhtContext);
 
   const {
     paos,
@@ -19,6 +22,8 @@ const Tool = () => {
   const text = useRef(currentNumber);
 
   useEffect(() => {
+    authContext.loadUser();
+
     if (currentNumber) {
       if (!document.querySelector('input').value) {
         // set input value
