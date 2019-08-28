@@ -9,8 +9,6 @@ This app can help you tu remember big numbers or undertand how to use Dominic sy
 1. API rest
 
 - when connected fill local storage with all cards from db (even if not empty but if error get local storage then) and do the same with number in Tool
-  - authState
-  - privateRoute
 - when editing a card, save it to db
 - optional
   - when connected fill local storage with (even if not empty but if error get local storage then) same with number in Tool

@@ -6,6 +6,7 @@ import Tool from './components/pages/Tool';
 import Home from './components/pages/Home';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
+import PrivateRoute from './components/auth/PrivateRoute';
 
 import PAOState from './context/pao/PAOState';
 import AuthState from './context/auth/AuthState';
@@ -20,10 +21,11 @@ function App() {
           <div className='container mt-3'>
             <Switch>
               <Route exact path='/' component={Home} />
-              <Route exact path='/settings' component={Settings} />
-              <Route exact path='/tool' component={Tool} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/register' component={Register} />
+
+              <PrivateRoute exact path='/settings' component={Settings} />
+              <PrivateRoute exact path='/tool' component={Tool} />
             </Switch>
           </div>
         </Router>
