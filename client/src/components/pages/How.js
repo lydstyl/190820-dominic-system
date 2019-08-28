@@ -8,6 +8,7 @@ const How = () => {
           {' '}
           Video à remplacer par la mienne
           <iframe
+            title='Youtube video'
             width='560'
             height='315'
             src='https://www.youtube.com/embed/eIhlwJsrRRU'
@@ -19,6 +20,7 @@ const How = () => {
         <li>
           <a
             target='_blank'
+            rel='noopener noreferrer'
             href='http://peoplebyinitials.com/p/dominic-number-memory-system'
           >
             Aide pour compléter votre liste de PAO

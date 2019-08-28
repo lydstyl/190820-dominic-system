@@ -34,8 +34,9 @@ const Tool = () => {
       getToolPAOs();
 
       // @TODO what if no card after /tool reloaded ?
-      // what if 4.654654444444445e+28 after reloaded a big number ?
+      // what if 4.654654444444445e+28 after reloaded a big number  ?
     }
+    // eslint-disable-next-line
   }, []);
 
   const updateCards = val => {
