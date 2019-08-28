@@ -11,16 +11,21 @@ import {
 
 const PAOState = props => {
   const initialSate = {
-    paos: null,
+    // paos: null,
+    paos: JSON.parse(localStorage.getItem('localGroupedCards')),
     toolPAOs: null,
     currentNumber: null
   };
+
+  // console.log('initialSate.paos', initialSate.paos);
+  console.log('initialSate.paos', initialSate.paos[0][0].title);
 
   const [state, dispatch] = useReducer(paoReducer, initialSate);
 
   // Get PAOs
   const getPAOs = () => {
-    const localArr = localStorage.getItem('arr');
+    // const localArr = localStorage.getItem('arr');
+    const localArr = localStorage.getItem('localGroupedCards');
     let arr = [];
 
     if (!localArr) {
