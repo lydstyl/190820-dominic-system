@@ -49,7 +49,7 @@ const AuthState = props => {
     };
 
     try {
-      const res = await axios.post('/api/users', formData, config); // 404 Not Found
+      const res = await axios.post('/api/users', formData, config);
 
       dispatch({
         type: REGISTER_SUCCESS,
