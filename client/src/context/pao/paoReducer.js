@@ -6,6 +6,8 @@ import {
   SET_CURRENT_NUMBER
 } from '../types';
 
+import axios from 'axios';
+
 export default (state, action) => {
   switch (action.type) {
     case GET_PAOS:
@@ -29,7 +31,18 @@ export default (state, action) => {
       const newPaos = [...state.paos];
       newPaos[action.payload.number][action.payload.position] = toBeReplaced;
 
-      localStorage.setItem('arr', JSON.stringify(newPaos));
+      localStorage.setItem('localGroupedCards', JSON.stringify(newPaos));
+
+      try {
+        const config = {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        };
+        axios.put('/api/paocards/', toBeReplaced, config);
+      } catch (error) {
+        console.log("axios.put('/api/paocards/' error: ", error);
+      }
 
       return {
         ...state,
