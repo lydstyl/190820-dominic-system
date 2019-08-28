@@ -47,6 +47,7 @@ const AuthState = props => {
   //saveDBCardsToLocal
   const saveDBCardsToLocal = async () => {
     try {
+      // get cards from db
       const res = await axios.get('/api/paocards');
       // console.log('saveDBCardsToLocal res: ', res.data);
 
@@ -103,6 +104,8 @@ const AuthState = props => {
         payload: res.data
       });
       loadUser();
+
+      saveDBCardsToLocal();
     } catch (err) {
       dispatch({
         type: LOGIN_FAIL,
