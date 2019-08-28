@@ -1,8 +1,12 @@
 import React, { useReducer } from 'react';
 import axios from 'axios';
+
 import AuthContext from './authContext';
 import authReducer from './authReducer';
+
 import setAuthToken from '../../utils/setAuthToken';
+import groupCards from '../../utils/groupCards';
+
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -40,6 +44,22 @@ const AuthState = props => {
     }
   };
 
+  //saveDBCardsToLocal
+  const saveDBCardsToLocal = async () => {
+    try {
+      const res = await axios.get('/api/paocards');
+      // console.log('saveDBCardsToLocal res: ', res.data);
+
+      // save not grouped cards copied from db in local
+      localStorage.setItem('localCards', JSON.stringify(res.data));
+
+      // save grouped cards in local
+      groupCards(res.data);
+    } catch (error) {
+      console.log('Error in saveDBCardsToLocal: ', error);
+    }
+  };
+
   // Register User
   const register = async formData => {
     const config = {
@@ -57,6 +77,8 @@ const AuthState = props => {
       });
 
       loadUser();
+
+      saveDBCardsToLocal();
     } catch (err) {
       dispatch({
         type: REGISTER_FAIL,

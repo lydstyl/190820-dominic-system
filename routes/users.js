@@ -53,7 +53,8 @@ router.post(
         }
       };
 
-      makeFirstsPAOs(user.id, res);
+      await makeFirstsPAOs(user.id, res);
+      console.log('after makeFirstsPAOs()');
 
       jwt.sign(
         payload,

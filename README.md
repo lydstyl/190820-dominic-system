@@ -8,6 +8,7 @@ This app can help you tu remember big numbers or undertand how to use Dominic sy
 
 1. API rest
 
+- when register put a loading spinner
 - keep authentificated when relaod Tool or Settings
 - when connected fill local storage with all cards from db (even if not empty but if error get local storage then) and do the same with number in Tool
 - when editing a card, save it to db
