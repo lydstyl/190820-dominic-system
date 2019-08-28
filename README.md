@@ -6,8 +6,6 @@ This app can help you tu remember big numbers or undertand how to use Dominic sy
 
 ## Todo before deploying
 
-1. API rest
-
 - When editing a card, save it to db
 - When register put a loading spinner
 - To fix : when logout an login with another user in Tool we first see last user cards and we have to go to settings and come back to get the current user cards
@@ -17,8 +15,6 @@ This app can help you tu remember big numbers or undertand how to use Dominic sy
   - Get warned if try to an unexisting user
   - When editing a number in Tool, save it to db too
   - Find and do the @todo
-
-2. Auth
 
 ## Usage
 
