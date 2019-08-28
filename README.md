@@ -8,18 +8,15 @@ This app can help you tu remember big numbers or undertand how to use Dominic sy
 
 1. API rest
 
-- when register put a loading spinner
-- keep authentificated when relaod Tool or Settings
-- when connected fill local storage with all cards from db (even if not empty but if error get local storage then) and do the same with number in Tool
-- when editing a card, save it to db
-- optional
-  - get warned if try to an unexisting user
-  - get a loading when generating firsts paos
-  - when connected fill local storage with (even if not empty but if error get local storage then) same with number in Tool
-  - when not logged in, only show Login, Register and How to use it
-  - when just registered or just loged in show Logout, Settings and Tool but no Login and no Register and also go to Tool
-  - when editing a number in Tool, save it to db too
-  - find and do the @todo
+- When editing a card, save it to db
+- When register put a loading spinner
+- To fix : when logout an login with another user in Tool we first see last user cards and we have to go to settings and come back to get the current user cards
+- Deploy
+
+- OPTIONAL:
+  - Get warned if try to an unexisting user
+  - When editing a number in Tool, save it to db too
+  - Find and do the @todo
 
 2. Auth
 
