@@ -4,6 +4,8 @@
 
 This app can help you tu remember big numbers or undertand how to use Dominic system.
 
+See the app : [Dominic system app](https://dominic-system.herokuapp.com/login).
+
 ## Todo before deploying
 
 - When register put a loading spinner
