@@ -18,7 +18,7 @@ const PAOState = props => {
   };
 
   // console.log('initialSate.paos', initialSate.paos);
-  console.log('initialSate.paos', initialSate.paos[0][0].title);
+  // console.log('initialSate.paos', initialSate.paos[0][0].title);
 
   const [state, dispatch] = useReducer(paoReducer, initialSate);
 
