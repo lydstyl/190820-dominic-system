@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://lydstyl:ml@b0008@dominicsystem-njreb.gcp.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "SECRET"
+}
