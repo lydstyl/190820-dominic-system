@@ -20,5 +20,4 @@ module.exports = async (userId, res) => {
       res.status(500).send('Server Error when making firsts PAOs');
     }
   }
-  console.log('in makeFirstsPAOs()');
 };

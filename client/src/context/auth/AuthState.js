@@ -58,7 +58,7 @@ const AuthState = props => {
     }
   };
 
-  //saveDBCardsToLocal
+  // saveDBCardsToLocal
   const saveDBCardsToLocal = async () => {
     try {
       // get cards from db

@@ -1,15 +1,24 @@
 h1 {
   font-size: 1.4rem;
 }
+
 h5 {
   font-size: 0.75rem;
   text-align: center;
 }
+
+.card {
+  width: 5rem;
+}
+
+.spiner img,
+.spiner p {
+  width: 90%;
+  margin: auto;
+}
+
 @media screen and (min-width: 768px) {
   h1 {
     font-size: 2.5rem;
   }
-}
-.card {
-  width: 5rem;
 }

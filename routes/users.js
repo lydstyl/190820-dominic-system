@@ -53,8 +53,7 @@ router.post(
         }
       };
 
-      await makeFirstsPAOs(user.id, res);
-      console.log('after makeFirstsPAOs()');
+      await makeFirstsPAOs(user.id, res); // this will save 100 personages, 100 actions and 100 object in db and this take time but we must await it so the app can works
 
       jwt.sign(
         payload,
