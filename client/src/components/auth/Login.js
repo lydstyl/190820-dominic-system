@@ -4,16 +4,13 @@ import AuthContext from '../../context/auth/authContext';
 const Login = props => {
   const authContext = useContext(AuthContext);
 
-  const { login, error, clearErrorAfter, isAuthenticated } = authContext;
+  const { login, error, isAuthenticated, setError } = authContext;
 
   useEffect(() => {
     if (isAuthenticated) {
       props.history.push('/tool'); // redirect
     }
-    if (error === 'Invalid credentials') {
-      console.log(error);
-      clearErrorAfter(4000);
-    }
+
     // eslint-disable-next-line
   }, [error, isAuthenticated, props.history]);
 
@@ -28,8 +25,8 @@ const Login = props => {
 
   const onSubmit = e => {
     e.preventDefault();
-    if ((!email, !password)) {
-      console.log('Please fill in all fields', 'danger');
+    if (!email || !password) {
+      setError('Please fill in all fields');
     } else {
       login({ email, password });
     }
@@ -38,6 +35,7 @@ const Login = props => {
   return (
     <div>
       <form>
+        {error && error}
         <div className='form-group'>
           <label htmlFor='email'>Email address</label>
           <input

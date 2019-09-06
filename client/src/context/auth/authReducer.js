@@ -4,7 +4,6 @@ import {
   USER_LOADED,
   AUTH_ERROR,
   LOGIN_SUCCESS,
-  LOGIN_FAIL,
   LOGOUT,
   SET_ERROR,
   CLEAR_ERRORS
@@ -26,6 +25,7 @@ export default (state, action) => {
 
     case LOGIN_SUCCESS:
       console.log('LOGIN_SUCCESS');
+
       localStorage.setItem('token', action.payload.token);
       return {
         ...state,
@@ -33,14 +33,9 @@ export default (state, action) => {
         isAuthenticated: true,
         loading: false
       };
-    case REGISTER_FAIL:
-      console.log('REGISTER_FAIL');
 
     case AUTH_ERROR:
       console.log('AUTH_ERROR');
-
-    case LOGIN_FAIL:
-      console.log('LOGIN_FAIL');
 
     case LOGOUT:
       console.log('LOGOUT');
@@ -53,11 +48,15 @@ export default (state, action) => {
         isAuthenticated: false,
         loading: false,
         user: null,
-        error: action.payload
+        msg: action.payload
       };
+
+    case REGISTER_FAIL:
+      console.log('REGISTER_FAIL');
 
     case SET_ERROR:
       console.log('SET_ERROR');
+
       return {
         ...state,
         error: action.payload

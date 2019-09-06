@@ -13,7 +13,6 @@ import {
   USER_LOADED,
   AUTH_ERROR,
   LOGIN_SUCCESS,
-  LOGIN_FAIL,
   LOGOUT,
   SET_ERROR,
   CLEAR_ERRORS
@@ -25,7 +24,8 @@ const AuthState = props => {
     isAuthenticated: localStorage.getItem('token') ? true : null,
     loading: true,
     user: null,
-    error: null
+    error: null,
+    msg: null
   };
 
   /*
@@ -121,17 +121,16 @@ const AuthState = props => {
 
       saveDBCardsToLocal();
     } catch (err) {
-      dispatch({
-        type: LOGIN_FAIL,
-        payload: err.response.data.msg
-          ? err.response.data.msg
-          : err.response.data
-      });
+      setError(
+        err.response.data.msg ? err.response.data.msg : err.response.data
+      );
     }
   };
 
   // Logout
-  const logout = () => dispatch({ type: LOGOUT });
+  const logout = () => {
+    dispatch({ type: LOGOUT });
+  };
 
   // Clear Errors
   const clearErrorAfter = time => {
@@ -152,7 +151,6 @@ const AuthState = props => {
         loadUser,
         login,
         logout,
-        // clearErrorAfter,
         setError
       }}
     >
