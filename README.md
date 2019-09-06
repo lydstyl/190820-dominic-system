@@ -1,28 +1,18 @@
 # Dominic System
 
-> Full stack MERN Dominic system manager with React hooks, context & JWT authentication.
+> Full stack (MERN) Dominic system manager with React hooks, context & JWT authentication.
 
 This app can help you tu remember big numbers or undertand how to use Dominic system.
 
 See the app : [Dominic system app](https://dominic-system.herokuapp.com/login).
 
-## Todo before deploying
-
-- When register put a loading spinner
-- To fix : when logout a login with another user in Tool we first see last user cards and we have to go to settings and come back to get the current user cards
-
-- OPTIONAL:
-  - Get warned if try to register an unexisting user
-  - When editing a number in Tool, save it to db too
-  - Find and do the @todo
-
 ## Usage
 
-Install dependencies
+### Install dependencies
 
 ```bash
-npm install
-npm client-install
+npm i
+npm run clientinstall
 ```
 
 ### Mongo connection setup
