@@ -6,6 +6,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
+  SET_ERROR,
   CLEAR_ERRORS
 } from '../types';
 
@@ -13,7 +14,6 @@ export default (state, action) => {
   switch (action.type) {
     case USER_LOADED:
       console.log('USER_LOADED');
-      console.log(action.payload);
 
       return {
         ...state,
@@ -46,6 +46,7 @@ export default (state, action) => {
       console.log('LOGOUT');
 
       localStorage.removeItem('token');
+
       return {
         ...state,
         token: null,
@@ -54,6 +55,14 @@ export default (state, action) => {
         user: null,
         error: action.payload
       };
+
+    case SET_ERROR:
+      console.log('SET_ERROR');
+      return {
+        ...state,
+        error: action.payload
+      };
+
     case CLEAR_ERRORS:
       console.log('CLEAR_ERRORS');
 
@@ -61,6 +70,7 @@ export default (state, action) => {
         ...state,
         error: null
       };
+
     default:
       return state;
   }

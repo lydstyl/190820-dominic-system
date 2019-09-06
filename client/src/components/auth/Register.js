@@ -4,15 +4,14 @@ import AuthContext from '../../context/auth/authContext';
 const Register = props => {
   const authContext = useContext(AuthContext);
 
-  const { register, error, clearErrors, isAuthenticated } = authContext;
+  const { register, error, isAuthenticated, setError } = authContext;
 
   useEffect(() => {
     if (isAuthenticated) {
       props.history.push('/tool'); // redirect to Tool
     }
     if (error === 'User already exists') {
-      console.log(error);
-      clearErrors();
+      setError(error);
     }
     // eslint-disable-next-line
   }, [error, isAuthenticated, props.history]);
@@ -31,8 +30,9 @@ const Register = props => {
     e.preventDefault();
     if (!email || !password) {
       console.log('Please enter all fields');
+      // no setError here because email and passwords have the attribute "required" in the html
     } else if (password !== password2) {
-      console.log('Passwords do not match');
+      setError('Passwords do not match');
     } else {
       register({
         email,
@@ -43,13 +43,7 @@ const Register = props => {
 
   return (
     <form onSubmit={onSubmit}>
-      {error === 'User already exists' ? (
-        <div className='alert alert-danger' role='alert'>
-          User already exists !
-        </div>
-      ) : (
-        ''
-      )}
+      {error && error}
 
       <div className='form-group'>
         <label htmlFor='email'>Email address</label>

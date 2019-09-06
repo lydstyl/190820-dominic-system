@@ -4,7 +4,7 @@ import AuthContext from '../../context/auth/authContext';
 const Login = props => {
   const authContext = useContext(AuthContext);
 
-  const { login, error, clearErrors, isAuthenticated } = authContext;
+  const { login, error, clearErrorAfter, isAuthenticated } = authContext;
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -12,7 +12,7 @@ const Login = props => {
     }
     if (error === 'Invalid credentials') {
       console.log(error);
-      clearErrors();
+      clearErrorAfter(4000);
     }
     // eslint-disable-next-line
   }, [error, isAuthenticated, props.history]);

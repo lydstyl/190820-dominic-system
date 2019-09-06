@@ -15,6 +15,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
+  SET_ERROR,
   CLEAR_ERRORS
 } from '../types';
 
@@ -25,6 +26,19 @@ const AuthState = props => {
     loading: true,
     user: null,
     error: null
+  };
+
+  /*
+    This function is used to show an error or msg to the user during a little time then to disapear.
+  */
+  const setError = error => {
+    const msg = (
+      <div className='alert alert-danger' role='alert'>
+        {error}
+      </div>
+    );
+    dispatch({ type: SET_ERROR, payload: msg });
+    clearErrorAfter(4000);
   };
 
   const [state, dispatch] = useReducer(authReducer, initialSate);
@@ -120,7 +134,11 @@ const AuthState = props => {
   const logout = () => dispatch({ type: LOGOUT });
 
   // Clear Errors
-  const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
+  const clearErrorAfter = time => {
+    setTimeout(() => {
+      dispatch({ type: CLEAR_ERRORS });
+    }, time);
+  };
 
   return (
     <AuthContext.Provider
@@ -134,7 +152,8 @@ const AuthState = props => {
         loadUser,
         login,
         logout,
-        clearErrors
+        // clearErrorAfter,
+        setError
       }}
     >
       {props.children}
