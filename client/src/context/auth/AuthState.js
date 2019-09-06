@@ -84,6 +84,11 @@ const AuthState = props => {
     };
 
     try {
+      // Show a spiner because it takes about 20 seconds to register and create 300 cards in db.
+      document.querySelectorAll('.spiner').forEach(spinerClassElement => {
+        spinerClassElement.classList.toggle('d-none');
+      });
+
       const res = await axios.post('/api/users', formData, config);
 
       dispatch({
@@ -95,6 +100,11 @@ const AuthState = props => {
 
       saveDBCardsToLocal();
     } catch (err) {
+      // Remove the the spiner if error
+      document.querySelectorAll('.spiner').forEach(spinerClassElement => {
+        spinerClassElement.classList.toggle('d-none');
+      });
+
       dispatch({
         type: REGISTER_FAIL,
         payload: err.response.data.msg

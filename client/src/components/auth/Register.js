@@ -34,12 +34,6 @@ const Register = props => {
     } else if (password !== password2) {
       setError('Passwords do not match');
     } else {
-      // Show a spiner because
-      document.querySelectorAll('.spiner').forEach(spinerClassElement => {
-        spinerClassElement.classList.toggle('d-none');
-      });
-
-      // It takes about 20 seconds to register and create 300 cards in db.
       register({
         email,
         password
@@ -57,7 +51,7 @@ const Register = props => {
           src='https://miro.medium.com/max/800/0*A4wJEoDWTjk6DGKG.'
           alt='spiner'
         />
-        <p>
+        <p className='text-center'>
           Please wait about 20 seconds while the app is making and saving your
           first 100 personages, 100 actions and 100 objects...
         </p>
